@@ -1,0 +1,21 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Install QEMU and dependencies
+    init: |
+      sudo apt-get update
+      sudo apt-get install -y qemu-system-x86 qemu-utils
+      sudo apt-get install -y ovmf  # UEFI firmware
+      sudo apt-get install -y virt-manager  # Optional GUI management tool
+      # Create a directory for VM images
+      mkdir -p ~/vm-images
+
+ports:
+  - port: 5900-5999
+    onOpen: ignore
+  # VNC ports for QEMU
+
+vscode:
+  extensions:
+    - ms-vscode.cpptools  # Optional: for development
